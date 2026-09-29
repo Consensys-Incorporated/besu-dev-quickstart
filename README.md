@@ -27,7 +27,7 @@ To run these tutorials, you must have the following installed:
 Create the docker compose file and artifacts with 
 
 ```
-$> npx besu-dev-quickstart
+$> npx @consensys-software/besu-dev-quickstart
          ____                                         
         / __ )___  _______  __                        
        / __  / _ \/ ___/ / / /                        
@@ -72,7 +72,7 @@ besu-test-network $> ./run.sh
 Alternatively, you can use cli options and skip the prompt above like so:
 
 ```bash
-npx besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens false
+npx @consensys-software/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens false
 ```
 
 ## Troubleshooting
