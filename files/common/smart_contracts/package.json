@@ -13,13 +13,13 @@
     "deploy-zeto-factory": "ts-node scripts/paladin_bootstrap/deploy_zeto_factory.ts"
   },
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^7.0.0",
     "@openzeppelin/contracts": "^5.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.0",
     "@types/ws": "^8.18.1",
-    "hardhat": "^2.22.0",
+    "hardhat": "^3.0.0",
     "ts-node": "^10.9.0",
-    "typescript": "^5.0.0"
+    "typescript": "^7.0.0"
   },
   "dependencies": {
     "@lfdecentralizedtrust/paladin-sdk": "latest",

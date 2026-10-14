@@ -32,31 +32,31 @@
   "devDependencies": {
     "@types/express": "^5.0.0",
     "@types/express-session": "^1.18.0",
-    "@types/node": "^20.11.0",
+    "@types/node": "^24.0.0",
     "@types/nunjucks": "^3.2.6",
     "@types/tmp": "^0.2.6",
     "@types/yargs": "^17.0.32",
     "typescript-eslint": "^8.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-prettier": "^9.1.0",
+    "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jsdoc": "^50.0.0",
+    "eslint-plugin-jsdoc": "^65.0.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
     "husky": "^9.0.1",
-    "lint-staged": "^15.2.0",
-    "typescript": "^5.3.3"
+    "lint-staged": "^17.0.0",
+    "typescript": "^7.0.0"
   },
   "dependencies": {
-    "chalk": "^5.3.0",
+    "chalk": "^6.0.0",
     "cli-spinners": "^3.1.0",
     "express": "^5.0.0",
     "express-session": "^1.18.0",
-    "got": "^14.0.0",
-    "isbinaryfile": "^5.0.0",
-    "log-update": "^6.0.0",
+    "got": "^16.0.0",
+    "isbinaryfile": "^6.0.0",
+    "log-update": "^8.0.0",
     "nunjucks": "^3.2.4",
-    "open": "^10.1.0",
+    "open": "^11.0.0",
     "tmp": "^0.2.3",
-    "yargs": "^17.7.2"
+    "yargs": "^18.0.0"
   }
 }
