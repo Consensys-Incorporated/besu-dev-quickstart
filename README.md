@@ -26,10 +26,10 @@ To run these tutorials, you must have the following installed:
 
 ## Usage 
 
-Create the docker compose file and artifacts with the command below. The same package is also published as `@consensys/besu-dev-quickstart`, so `npx @consensys/besu-dev-quickstart` works too.
+Create the docker compose file and artifacts with the command below.
 
 ```
-$> npx @consensys-software/besu-dev-quickstart
+$> npx @consensys/besu-dev-quickstart
          ____                                         
         / __ )___  _______  __                        
        / __  / _ \/ ___/ / / /                        
@@ -74,7 +74,7 @@ besu-test-network $> ./run.sh
 Alternatively, you can use cli options and skip the prompt above like so:
 
 ```bash
-npx @consensys-software/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens false
+npx @consensys/besu-dev-quickstart --networkType private --outputPath ./besu-test-network --otel false --chainlens false
 ```
 
 ## Troubleshooting
@@ -96,7 +96,7 @@ Containers run as the default users and we do not alter them. If you run into is
 
 ## Publishing
 
-The same build is published to npm under two names, both with public access: `@consensys-software/besu-dev-quickstart` and `@consensys/besu-dev-quickstart`. You need publish rights in both npm orgs.
+The package is published to npm as `@consensys/besu-dev-quickstart` with public access. You need publish rights in the `@consensys` npm org.
 
 1. Bump the version in a pull request. This updates `package.json` and `npm-shrinkwrap.json` without committing or tagging:
 
@@ -113,7 +113,7 @@ The same build is published to npm under two names, both with public access: `@c
    npm whoami          # run `npm login` if this fails
    ```
 
-3. Check what will be published under each name:
+3. Check what will be published:
 
    ```bash
    npm run release:dry-run
@@ -125,7 +125,7 @@ The same build is published to npm under two names, both with public access: `@c
    npm run release
    ```
 
-   This runs `clear`, `build` and `lint`, then publishes under each name with the `latest` tag. It stops at the first failure. `package.json` and `npm-shrinkwrap.json` are restored afterwards, even if a publish fails.
+   This runs `clear`, `build` and `lint`, then publishes with the `latest` tag. If this version is already on npm, the publish is skipped.
 
 5. Once the publish succeeds, tag the release and push the tag:
 

@@ -1,5 +1,5 @@
 {
-  "name": "@consensys-software/generate_node_details",
+  "name": "@consensys/generate_node_details",
   "version": "1.0.0",
   "description": "Example script to create nodekeys and address for a Besu (Besu or GoBesu) node",
   "scripts": {},

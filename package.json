@@ -1,12 +1,12 @@
 {
-  "name": "@consensys-software/besu-dev-quickstart",
+  "name": "@consensys/besu-dev-quickstart",
   "version": "0.3.0",
   "description": "A utility that lets developers try out Besu for private or public networks",
   "main": "build/index.js",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Consensys/besu-dev-quickstart.git"
+    "url": "git+ssh://git@github.com/Consensys-Incorporated/besu-dev-quickstart.git"
   },
   "contributors": [
     "Joshua Fernandes <3722503+joshuafernandes@users.noreply.github.com>"
