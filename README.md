@@ -3,6 +3,8 @@
 ## Table of Contents
 1. [Prerequisites](#prerequisites)
 2. [Usage](#usage)
+3. [Troubleshooting](#troubleshooting)
+4. [Publishing](#publishing)
 
 ## Prerequisites
 
@@ -24,7 +26,7 @@ To run these tutorials, you must have the following installed:
 
 ## Usage 
 
-Create the docker compose file and artifacts with 
+Create the docker compose file and artifacts with the command below. The same package is also published as `@consensys/besu-dev-quickstart`, so `npx @consensys/besu-dev-quickstart` works too.
 
 ```
 $> npx @consensys-software/besu-dev-quickstart
@@ -92,5 +94,43 @@ user: $(id -u):$(id -g)
 Containers run as the default users and we do not alter them. If you run into issues deleting the 
 `data` folder, you will need to use `sudo` permissions to do that.
 
+## Publishing
 
+The same build is published to npm under two names, both with public access: `@consensys-software/besu-dev-quickstart` and `@consensys/besu-dev-quickstart`. You need publish rights in both npm orgs.
 
+1. Bump the version in a pull request. This updates `package.json` and `npm-shrinkwrap.json` without committing or tagging:
+
+   ```bash
+   npm version minor --no-git-tag-version   # or patch / major
+   ```
+
+   Merge the pull request once it's approved.
+
+2. Start from an up-to-date `master` with no uncommitted changes, and check you're logged in to npm:
+
+   ```bash
+   git checkout master && git pull
+   npm whoami          # run `npm login` if this fails
+   ```
+
+3. Check what will be published under each name:
+
+   ```bash
+   npm run release:dry-run
+   ```
+
+4. Build, lint and publish:
+
+   ```bash
+   npm run release
+   ```
+
+   This runs `clear`, `build` and `lint`, then publishes under each name with the `latest` tag. It stops at the first failure. `package.json` and `npm-shrinkwrap.json` are restored afterwards, even if a publish fails.
+
+5. Once the publish succeeds, tag the release and push the tag:
+
+   ```bash
+   git tag X.Y.Z && git push origin X.Y.Z
+   ```
+
+If step 4 fails partway, fix the problem and run `npm run release` again. Any name that already has this version on npm is skipped.

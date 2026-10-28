@@ -59,6 +59,7 @@ services:
       - 30303
       - 9545
     environment:
+      - BESU_IDENTITY=validator1
       - OTEL_RESOURCE_ATTRIBUTES=service.name=validator1,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"
@@ -77,6 +78,7 @@ services:
       - 30303
       - 9545
     environment:
+      - BESU_IDENTITY=validator2
       - OTEL_RESOURCE_ATTRIBUTES=service.name=validator2,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"
@@ -97,6 +99,7 @@ services:
       - 30303
       - 9545
     environment:
+      - BESU_IDENTITY=validator3
       - OTEL_RESOURCE_ATTRIBUTES=service.name=validator3,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"
@@ -117,6 +120,7 @@ services:
       - 30303
       - 9545
     environment:
+      - BESU_IDENTITY=validator4
       - OTEL_RESOURCE_ATTRIBUTES=service.name=validator4,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"
@@ -134,6 +138,7 @@ services:
     << : *besu-def
     container_name: rpcnode
     environment:
+      - BESU_IDENTITY=rpcnode
       - OTEL_RESOURCE_ATTRIBUTES=service.name=rpcnode,service.version=${BESU_VERSION:-latest}
     volumes:
       - ./config/besu/:/config
@@ -152,6 +157,27 @@ services:
     networks:
       besu-dev-quickstart:
         ipv4_address: 172.16.239.15
+
+  # Besu explorer, reads from rpcnode. validators.json lists each validator's own
+  # RPC endpoint so the validators page can propose/discard votes (demo only).
+  explorer:
+    image: consensys/besu-blockchain-explorer:0.0.2
+    container_name: explorer
+    environment:
+      - BE_RPC_URL=http://rpcnode:8545
+      - BE_PUBLIC_RPC_URL=http://localhost:8545
+      - DISABLE_AUTH=true
+      - NEXTAUTH_URL=http://localhost:25000/explorer/api/auth
+    volumes:
+      - ./config/besu-blockchain-explorer/validators.json:/config/validators.json:ro
+    depends_on:
+      rpcnode:
+        condition: service_healthy
+    ports:
+      - 25000:25000/tcp
+    networks:
+      besu-dev-quickstart:
+        ipv4_address: 172.16.239.16
 
 
 {% if privacy %}
@@ -190,6 +216,7 @@ services:
     << : *besu-def
     container_name: member1-besu
     environment:
+      - BESU_IDENTITY=member1-besu
       - OTEL_RESOURCE_ATTRIBUTES=service.name=member1-besu,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"
@@ -241,6 +268,7 @@ services:
     << : *besu-def
     container_name: member2-besu
     environment:
+      - BESU_IDENTITY=member2-besu
       - OTEL_RESOURCE_ATTRIBUTES=service.name=member2-besu,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"
@@ -292,6 +320,7 @@ services:
     << : *besu-def
     container_name: member3-besu
     environment:
+      - BESU_IDENTITY=member3-besu
       - OTEL_RESOURCE_ATTRIBUTES=service.name=member3-besu,service.version=${BESU_VERSION:-latest}
     labels:
       - "consensus=besu"

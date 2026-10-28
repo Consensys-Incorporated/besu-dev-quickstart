@@ -1,10 +1,13 @@
 {
   "name": "@consensys-software/besu-dev-quickstart",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "A utility that lets developers try out Besu for private or public networks",
   "main": "build/index.js",
   "type": "module",
-  "repository": "git@github.com:Consensys/besu-dev-quickstart.git",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Consensys/besu-dev-quickstart.git"
+  },
   "contributors": [
     "Joshua Fernandes <3722503+joshuafernandes@users.noreply.github.com>"
   ],
@@ -19,7 +22,9 @@
     "templates",
     "index.js"
   ],
-  "bin": "./index.js",
+  "bin": {
+    "besu-dev-quickstart": "index.js"
+  },
   "scripts": {
     "build": "tsc",
     "lint": "eslint .",
@@ -27,7 +32,9 @@
     "prepare": "npm run build && npm run lint:fix",
     "start": "node build/index.js",
     "dev": "tsc -w",
-    "clear": "rm -rf build"
+    "clear": "rm -rf build",
+    "release": "npm run clear && npm run build && npm run lint && node scripts/publish.mjs",
+    "release:dry-run": "npm run clear && npm run build && npm run lint && node scripts/publish.mjs --dry-run"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
