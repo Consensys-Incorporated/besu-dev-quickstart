@@ -1,0 +1,8 @@
+{
+  "validators": [
+    { "name": "validator1", "rpcUrl": "http://validator1:8545" },
+    { "name": "validator2", "rpcUrl": "http://validator2:8545" },
+    { "name": "validator3", "rpcUrl": "http://validator3:8545" },
+    { "name": "validator4", "rpcUrl": "http://validator4:8545" }
+  ]
+}
