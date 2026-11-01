@@ -6,6 +6,8 @@
     "compile": "hardhat compile",
     "public-tx": "ts-node scripts/public/public_tx.ts",
     "erc20-tx": "ts-node scripts/public/erc20_tx.ts",
+    "nft-tx": "ts-node scripts/public/nft_tx.ts",
+    "tokens-tx": "ts-node scripts/public/tokens_tx.ts",
     "pente-tx": "ts-node scripts/privacy/pente_tx.ts",
     "erc20-pente-tx": "ts-node scripts/privacy/erc20_pente_tx.ts",
     "noto-tx": "ts-node scripts/privacy/noto_tx.ts",

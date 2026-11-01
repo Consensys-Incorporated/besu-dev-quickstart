@@ -2,7 +2,11 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.27",
+  solidity: {
+    version: "0.8.27",
+    // genesis.json enables Cancun from block 0; newer OpenZeppelin releases need it (mcopy)
+    settings: { evmVersion: "cancun" },
+  },
   networks: {
     besu: {
       url: "http://localhost:8545",

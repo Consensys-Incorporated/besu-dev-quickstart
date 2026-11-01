@@ -161,7 +161,7 @@ services:
   # Besu explorer, reads from rpcnode. validators.json lists each validator's own
   # RPC endpoint so the validators page can propose/discard votes (demo only).
   explorer:
-    image: consensys/besu-blockchain-explorer:0.0.2
+    image: consensys/besu-blockchain-explorer:0.0.3
     container_name: explorer
     environment:
       - BE_RPC_URL=http://rpcnode:8545
