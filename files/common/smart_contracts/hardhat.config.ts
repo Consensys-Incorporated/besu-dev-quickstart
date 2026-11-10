@@ -2,9 +2,21 @@ import { HardhatUserConfig } from "hardhat/config";
 
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.27",
-    // genesis.json enables Cancun from block 0; newer OpenZeppelin releases need it (mcopy)
-    settings: { evmVersion: "cancun" },
+    compilers: [
+      {
+        version: "0.8.27",
+        // genesis.json enables Cancun from block 0; newer OpenZeppelin releases need it (mcopy)
+        settings: { evmVersion: "cancun" },
+      },
+    ],
+    overrides: {
+      // erc20_pente_tx.ts deploys this contract inside a Pente privacy group.
+      // Paladin's Pente EVM supports up to shanghai and rejects cancun bytecode.
+      "contracts/ERC20Token.sol": {
+        version: "0.8.27",
+        settings: { evmVersion: "shanghai" },
+      },
+    },
   },
   networks: {
     besu: {
