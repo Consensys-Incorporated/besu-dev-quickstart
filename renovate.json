@@ -5,6 +5,9 @@
   ],
   "enabledManagers": ["github-actions", "npm"],
   "dependencyDashboard": false,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "description": "Pin all GitHub Actions to SHA digests",
